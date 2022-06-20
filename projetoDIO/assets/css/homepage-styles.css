@@ -1,0 +1,155 @@
+@import url('/assets/css/reset.css');
+@import url('/assets/css/global.css');
+
+body {
+    background-color: #B9001F;
+}
+
+body::before { /*pseudo elemento virtuais que não são declarados mas  é criado virtualmente e aplicamos algumas propriedades nele*/
+    content: ""; /* um conteudo, precisa de um em um pseudo elemento*/
+    background-image: url('/assets/images/spider-man-background.jpg');
+    background-repeat: no-repeat; /*nao irá repetir a imagem*/
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    opacity: 0.2;
+    transition: background-image 1s ease-in-out, opacity 1s ease-in-out;
+
+}
+
+.s-menu {
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
+    position: relative; /*vai deixar o menu a frente do body::before, ou seja, clicável*/
+}
+
+.s-menu__item {
+    display: inline-block; /* dessa forma os itens do menu ficarão lado a lado*/
+    text-transform: uppercase; /* dessa forma a letra ficará toda em maiuscula*/
+    margin: 0 1.25rem;
+}
+
+.s-menu__icon {
+    width: 2.5rem; /*largura*/
+    margin: 0 1.25rem;
+    vertical-align: middle;
+}
+.s-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.s-card {
+    border: 0.5rem solid white;
+    width: calc(100% / 3 - 8%);
+    height: 70vh; /*viewport, area disponivel pro usuario ver aquele site*/
+    position:relative;
+    transition: filter .5s ease-in-out;
+}
+
+.s-card__background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*imagem ocupe todo o espaço sem bordas nem nada*/
+    position: absolute;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.s-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /*contain pra que ele se encaixe dentro do container que está sendo colocado, no caso, nosso card*/
+    position: relative;
+    transition: 1s ease-in-out;
+}
+
+.s-card__title {
+    font-size: 2rem;
+    text-transform: uppercase; 
+    text-align: center; /*todo o conteudo fica alinhado ao centro daquele texto*/
+    position: absolute; /*ficar dentro encima do card logo depois do spiderman*/
+    width: 100%;
+    bottom: 0; /* pra que fique ali bem dentro do card*/
+    transition: bottom 1s ease-in-out;
+}
+
+.s-controller {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.s-controller__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+}
+
+.s-controller__button:nth-child(2) { /*pegar um elemento específico da classe em questão*/
+    margin: 0 3.75rem
+}
+
+.s-controller__button:hover { /*determina um evento de passar o mouse encima*/
+    transform: scale(1.1);
+}
+
+.s-controller__line {
+    background-color: white;
+    width: 50%;
+    height: 2px;
+    position: absolute;
+}
+
+/* hover animation */
+
+.s-card--hovered .s-card__background{
+    cursor: pointer;
+    opacity: 0;
+}
+
+.s-card--hovered .s-card__image{
+    transform: scale(1.4);
+    filter: drop-shadow(30px 10px 4px rgba(0, 0, 0, .5) ); /*colocar sombra*/
+}
+
+body#spider-man-01-hovered::before{ /*pega o elemento body que tem esse id*/
+    background-image: url('/assets/images/pic-sm-bg-01.jpg');
+}      
+
+body#spider-man-02-hovered::before{ /*pega o elemento body que tem esse id*/
+    background-image: url('/assets/images/pic-sm-bg-02.jpg');
+}      
+
+body#spider-man-03-hovered::before{ /*pega o elemento body que tem esse id*/
+    background-image: url('/assets/images/pic-sm-bg-03.jpg');
+}      
+
+body[id^="spider-man-"]::before { /*colchetes pega um atributo do body em especifico e o ^= filtra algo q vc quer pegar*/
+    opacity: 1;
+}    
+
+body[id^="spider-man-"] .s-card:not(.s-card--hovered) { /*pega tds os elem de card que nao tenha o hovered */
+    filter: grayscale(100%); /*aplique esse filtro em 100%*/
+}
+
+.s-card--hovered .s-card__title {
+    bottom: 50%;
+}

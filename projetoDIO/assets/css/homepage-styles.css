@@ -10,6 +10,7 @@ body::before { /*pseudo elemento virtuais que não são declarados mas  é criad
     background-image: url('/assets/images/spider-man-background.jpg');
     background-repeat: no-repeat; /*nao irá repetir a imagem*/
     background-position: center;
+    background-size: cover;
     width: 100%;
     height: 100%;
     position:absolute;
@@ -54,7 +55,7 @@ body::before { /*pseudo elemento virtuais que não são declarados mas  é criad
 .s-card__background {
     width: 100%;
     height: 100%;
-    object-fit: cover; /*imagem ocupe todo o espaço sem bordas nem nada*/
+    object-fit:cover; /*imagem ocupe todo o espaço sem bordas nem nada*/
     position: absolute;
     opacity: 1;
     transition: opacity 1s ease-in-out;
